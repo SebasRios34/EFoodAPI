@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace BLLProyecto
 {
-    public class UsuariosAdmin
+    public class Rol
     {
         #region Variables para Conexion
         SqlConnection conn;
@@ -22,7 +22,7 @@ namespace BLLProyecto
         #endregion
 
 
-        public string cargarUsuariosAdmin()
+        public string cargarRol()
         {
             conn = DALProyecto.DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -31,7 +31,7 @@ namespace BLLProyecto
             }
             else
             {
-                sql = "cargarUsuariosAdmin";
+                sql = "cargarRol";
                 ds = DALProyecto.DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
                 if (numError != 0)
                 {
