@@ -41,7 +41,7 @@ namespace BLLProyecto
             set { usuariosNombre = value; }
         }
 
-        public string Contrsena
+        public string Contrasena
         {
             get { return contrasena; }
             set { contrasena = value; }
@@ -86,7 +86,7 @@ namespace BLLProyecto
             else
             {
                 sql = "cargarUsuariosAdmin";
-                ds = DALProyecto.DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
+                ds = DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
                 if (numError != 0)
                 {
                     return null;
