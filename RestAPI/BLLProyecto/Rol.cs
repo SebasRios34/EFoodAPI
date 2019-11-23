@@ -41,7 +41,7 @@ namespace BLLProyecto
 
         public string cargarRol()
         {
-            conn = DALProyecto.DAL.traerConexion("public", ref mensajeError, ref numError);
+            conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
             {
                 return null;
@@ -49,7 +49,7 @@ namespace BLLProyecto
             else
             {
                 sql = "cargarRol";
-                ds = DALProyecto.DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
+                ds = DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
                 if (numError != 0)
                 {
                     return null;
