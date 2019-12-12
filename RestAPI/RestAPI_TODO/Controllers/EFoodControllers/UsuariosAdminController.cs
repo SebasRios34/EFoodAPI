@@ -16,9 +16,16 @@ namespace RestAPI_TODO.Controllers.EFoodControllers
             return new UsuariosAdmin().cargarUsuariosAdmin();
         }
 
+        public string Get(int id) 
+        {
+            return new UsuariosAdmin().cargarUsuariosAdminId();
+        }
+
         public string Post([FromBody]UsuariosAdmin usuariosAdmin)
         {
             return usuariosAdmin.agregarUsuariosAdmin("Insertar") ? "Se añadieron con exito" : "No se logro guardar un nuevo usuario";
         }
+
+
     }
 }

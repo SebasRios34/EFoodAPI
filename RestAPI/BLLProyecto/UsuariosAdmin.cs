@@ -98,6 +98,28 @@ namespace BLLProyecto
             }
         }
 
+        public string cargarUsuariosAdminId()
+        {
+            conn = DALProyecto.DAL.traerConexion("public", ref mensajeError, ref numError);
+            if (conn == null)
+            {
+                return null;
+            }
+            else
+            {
+                sql = "cargarUsuariosAdminId";
+                ds = DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
+                if (numError != 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(ds.Tables[0]);
+                }
+            }
+        }
+
         public bool agregarUsuariosAdmin(string accion)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
