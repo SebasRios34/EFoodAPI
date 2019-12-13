@@ -71,7 +71,7 @@ namespace BLLProyecto
             }
             else
             {
-                sql = "cargarProducto";
+                sql = "cargarProductos";
                 ds = DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
                 if (numError != 0)
                 {

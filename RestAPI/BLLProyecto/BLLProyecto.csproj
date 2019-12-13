@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bitacora.cs" />
+    <Compile Include="Cheque.cs" />
     <Compile Include="Consecutivo.cs" />
     <Compile Include="DatosCliente.cs" />
     <Compile Include="DatosTarjetas.cs" />
