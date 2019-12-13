@@ -65,6 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bitacora.cs" />
+    <Compile Include="Consecutivo.cs" />
+    <Compile Include="DatosCliente.cs" />
+    <Compile Include="DatosTarjetas.cs" />
+    <Compile Include="LineaComida.cs" />
     <Compile Include="PreguntaSeguridad.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="UsuariosAdmin.cs" />

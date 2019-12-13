@@ -165,7 +165,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ECommerceControllers\DatosClienteController.cs" />
+    <Compile Include="Controllers\ECommerceControllers\DatosTarjetaController.cs" />
     <Compile Include="Controllers\EFoodControllers\BitacoraController.cs" />
+    <Compile Include="Controllers\EFoodControllers\ConsecutivoController.cs" />
+    <Compile Include="Controllers\EFoodControllers\LineaComidaController.cs" />
     <Compile Include="Controllers\EFoodControllers\PreguntaSeguridadController.cs" />
     <Compile Include="Controllers\EFoodControllers\RolController.cs" />
     <Compile Include="Controllers\EFoodControllers\UsuariosAdminController.cs" />
