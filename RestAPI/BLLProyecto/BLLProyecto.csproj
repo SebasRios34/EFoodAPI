@@ -70,7 +70,11 @@
     <Compile Include="DatosTarjetas.cs" />
     <Compile Include="LineaComida.cs" />
     <Compile Include="PreguntaSeguridad.cs" />
+    <Compile Include="ProcesadorPago.cs" />
+    <Compile Include="Producto.cs" />
     <Compile Include="Rol.cs" />
+    <Compile Include="Tarjetas.cs" />
+    <Compile Include="TiposPrecio.cs" />
     <Compile Include="UsuariosAdmin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

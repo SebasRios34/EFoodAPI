@@ -11,11 +11,10 @@ using Newtonsoft.Json;
 
 namespace BLLProyecto
 {
-    public class LineaComida
+    public class Tarjetas
     {
-        #region Propiedades
-        private int tipoConsecutivo, codigoLineaComida;
-        private string nombreLineaComida;
+        private int tipoConsecutivo, codigoTarjeta;
+        private string nombreTarjeta;
 
         public int TipoConsecutivo
         {
@@ -23,18 +22,17 @@ namespace BLLProyecto
             set { tipoConsecutivo = value; }
         }
 
-        public int CodigoLineaComida
+        public int CodigoTarjeta
         {
-            get { return codigoLineaComida; }
-            set { codigoLineaComida = value; }
+            get { return codigoTarjeta; }
+            set { codigoTarjeta = value; }
         }
 
-        public string NombreLineaComida
+        public string Nombretarjeta
         {
-            get { return nombreLineaComida; }
-            set { nombreLineaComida = value; }
+            get { return nombreTarjeta; }
+            set { nombreTarjeta = value; }
         }
-        #endregion
 
         #region Variables para Conexion
         SqlConnection conn;
@@ -44,7 +42,7 @@ namespace BLLProyecto
         DataSet ds;
         #endregion
 
-        public string cargarLineaComida()
+        public string cargarTarjetas()
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -53,7 +51,7 @@ namespace BLLProyecto
             }
             else
             {
-                sql = "cargarLineaComida";
+                sql = "cargarTarjetas";
                 ds = DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
                 if (numError != 0)
                 {
@@ -66,7 +64,7 @@ namespace BLLProyecto
             }
         }
 
-        public bool insertarLineaComida(string accion)
+        public bool insertarTarjetas(string accion)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -77,16 +75,16 @@ namespace BLLProyecto
             {
                 if (accion.Equals("Insertar"))
                 {
-                    sql = "insertarLineaComida";
+                    sql = "insertarTarjetas";
                 }
                 else
                 {
-                    sql = "modificarLineaComida";
+                    sql = "modificarTarjetas";
                 }
                 ParametrosStructures[] parametros = new ParametrosStructures[3];
                 DAL.agregarEstructuraParametros(ref parametros, 0, "@tipoConsecutivo", SqlDbType.Int, tipoConsecutivo);
-                DAL.agregarEstructuraParametros(ref parametros, 1, "@codigoLineaComida", SqlDbType.Int, codigoLineaComida);
-                DAL.agregarEstructuraParametros(ref parametros, 2, "@nombreLineaComida", SqlDbType.DateTime, nombreLineaComida);
+                DAL.agregarEstructuraParametros(ref parametros, 1, "@codigoTarjeta", SqlDbType.Int, codigoTarjeta);
+                DAL.agregarEstructuraParametros(ref parametros, 2, "@nombreTarjeta", SqlDbType.VarChar, nombreTarjeta);
 
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
@@ -105,7 +103,7 @@ namespace BLLProyecto
             }
         }
 
-        public bool eliminarLineaComida(int codigoLineaComida)
+        public bool eliminarTarjetas(int codigoTarjetas)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -116,9 +114,9 @@ namespace BLLProyecto
             }
             else
             {
-                sql = "eliminarLineaComida";
+                sql = "eliminarTarjetas";
                 ParametrosStructures[] parametros = new ParametrosStructures[1];
-                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoLineaComida", SqlDbType.Int, codigoLineaComida);
+                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoTarjeta", SqlDbType.Int, codigoTarjeta);
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
                 if (numError != 0)

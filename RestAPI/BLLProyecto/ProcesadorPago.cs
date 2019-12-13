@@ -11,28 +11,57 @@ using Newtonsoft.Json;
 
 namespace BLLProyecto
 {
-    public class LineaComida
+    public class ProcesadorPago
     {
-        #region Propiedades
-        private int tipoConsecutivo, codigoLineaComida;
-        private string nombreLineaComida;
+        #region
+        private int tipoConsecutivo, codigoProcesador, codigoTarjeta;
+        private string nombreProcesador, tipo, estado, requiereVerificacion, metodo;
 
         public int TipoConsecutivo
         {
             get { return tipoConsecutivo; }
             set { tipoConsecutivo = value; }
         }
-
-        public int CodigoLineaComida
+        public int CodigoProcesador
         {
-            get { return codigoLineaComida; }
-            set { codigoLineaComida = value; }
+            get { return codigoProcesador; }
+            set { codigoProcesador = value; }
         }
 
-        public string NombreLineaComida
+        public int CodigoTarjeta
         {
-            get { return nombreLineaComida; }
-            set { nombreLineaComida = value; }
+            get { return codigoTarjeta; }
+            set { codigoTarjeta = value; }
+        }
+
+        public string NombreProcesador
+        {
+            get { return nombreProcesador; }
+            set { nombreProcesador = value; }
+        }
+
+        public string Tipo
+        {
+            get { return tipo; }
+            set { tipo = value; }
+        }
+
+        public string Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
+
+        public string RequiereVerificacion
+        {
+            get { return requiereVerificacion; }
+            set { requiereVerificacion = value; }
+        }
+
+        public string Metodo
+        {
+            get { return metodo; }
+            set { metodo = value; }
         }
         #endregion
 
@@ -44,7 +73,7 @@ namespace BLLProyecto
         DataSet ds;
         #endregion
 
-        public string cargarLineaComida()
+        public string cargarProcesadorPago()
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -53,7 +82,7 @@ namespace BLLProyecto
             }
             else
             {
-                sql = "cargarLineaComida";
+                sql = "cargarProcesadorPago";
                 ds = DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
                 if (numError != 0)
                 {
@@ -66,7 +95,7 @@ namespace BLLProyecto
             }
         }
 
-        public bool insertarLineaComida(string accion)
+        public bool insertarProcesadorPago(string accion)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -77,16 +106,21 @@ namespace BLLProyecto
             {
                 if (accion.Equals("Insertar"))
                 {
-                    sql = "insertarLineaComida";
+                    sql = "insertarProcesadorPago";
                 }
                 else
                 {
-                    sql = "modificarLineaComida";
+                    sql = "modificarProcesadorPago";
                 }
-                ParametrosStructures[] parametros = new ParametrosStructures[3];
+                ParametrosStructures[] parametros = new ParametrosStructures[8];
                 DAL.agregarEstructuraParametros(ref parametros, 0, "@tipoConsecutivo", SqlDbType.Int, tipoConsecutivo);
-                DAL.agregarEstructuraParametros(ref parametros, 1, "@codigoLineaComida", SqlDbType.Int, codigoLineaComida);
-                DAL.agregarEstructuraParametros(ref parametros, 2, "@nombreLineaComida", SqlDbType.DateTime, nombreLineaComida);
+                DAL.agregarEstructuraParametros(ref parametros, 1, "@codigoProcesador", SqlDbType.Int, codigoProcesador);
+                DAL.agregarEstructuraParametros(ref parametros, 2, "@nombreProcesador", SqlDbType.VarChar, nombreProcesador);
+                DAL.agregarEstructuraParametros(ref parametros, 3, "@tipo", SqlDbType.VarChar, tipo);
+                DAL.agregarEstructuraParametros(ref parametros, 4, "@estado", SqlDbType.VarChar, estado);
+                DAL.agregarEstructuraParametros(ref parametros, 5, "@requiereVerificacion", SqlDbType.VarChar, requiereVerificacion);
+                DAL.agregarEstructuraParametros(ref parametros, 6, "@metodo", SqlDbType.VarChar, metodo);
+                DAL.agregarEstructuraParametros(ref parametros, 7, "@codigoTarjeta", SqlDbType.Int, codigoTarjeta);
 
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
@@ -105,7 +139,7 @@ namespace BLLProyecto
             }
         }
 
-        public bool eliminarLineaComida(int codigoLineaComida)
+        public bool eliminarProcesadorPago(int codigoProcesadorPago)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -118,7 +152,7 @@ namespace BLLProyecto
             {
                 sql = "eliminarLineaComida";
                 ParametrosStructures[] parametros = new ParametrosStructures[1];
-                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoLineaComida", SqlDbType.Int, codigoLineaComida);
+                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoProcesador", SqlDbType.Int, codigoProcesadorPago);
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
                 if (numError != 0)

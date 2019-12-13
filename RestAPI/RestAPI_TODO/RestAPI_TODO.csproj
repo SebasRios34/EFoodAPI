@@ -171,7 +171,11 @@
     <Compile Include="Controllers\EFoodControllers\ConsecutivoController.cs" />
     <Compile Include="Controllers\EFoodControllers\LineaComidaController.cs" />
     <Compile Include="Controllers\EFoodControllers\PreguntaSeguridadController.cs" />
+    <Compile Include="Controllers\EFoodControllers\ProcesadorPagoController.cs" />
+    <Compile Include="Controllers\EFoodControllers\ProductoController.cs" />
     <Compile Include="Controllers\EFoodControllers\RolController.cs" />
+    <Compile Include="Controllers\EFoodControllers\TarjetasController.cs" />
+    <Compile Include="Controllers\EFoodControllers\TipoPrecioController.cs" />
     <Compile Include="Controllers\EFoodControllers\UsuariosAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
