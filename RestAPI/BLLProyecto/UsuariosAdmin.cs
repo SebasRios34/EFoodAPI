@@ -120,6 +120,43 @@ namespace BLLProyecto
             }
         }
 
+        public bool modificarContrasena(string accion)
+        {
+            conn = DAL.traerConexion("public", ref mensajeError, ref numError);
+            if (conn == null)
+            {
+                return false;
+            }
+            else
+            {
+                if (accion.Equals("Modificar"))
+                {
+                    sql = "modificarUsuariosAdminContrasena";
+                }
+                else
+                {
+                    sql = "modificarUsuariosAdmin";
+                }
+                ParametrosStructures[] parametros = new ParametrosStructures[2];
+                DAL.agregarEstructuraParametros(ref parametros, 0, "@usuariosAdminId", SqlDbType.Int, usuariosAdminId);
+                DAL.agregarEstructuraParametros(ref parametros, 1, "@contrasena", SqlDbType.VarChar, contrasena);
+                DAL.conectar(conn, ref mensajeError, ref numError);
+                DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
+
+                if (numError != 0)
+                {
+                    HttpContext.Current.Response.Redirect("NUMERO DE ERROR: " + numError.ToString() + "MENSAJE DE ERROR: " + mensajeError);
+                    DAL.desconectar(conn, ref mensajeError, ref numError);
+                    return false;
+                }
+                else
+                {
+                    DAL.desconectar(conn, ref mensajeError, ref numError);
+                    return true;
+                }
+            }
+        }
+
         public bool agregarUsuariosAdmin(string accion)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);

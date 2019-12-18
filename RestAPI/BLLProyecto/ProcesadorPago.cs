@@ -139,7 +139,7 @@ namespace BLLProyecto
             }
         }
 
-        public bool eliminarProcesadorPago(int codigoProcesadorPago)
+        public bool eliminarProcesadorPago(int id)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -150,9 +150,9 @@ namespace BLLProyecto
             }
             else
             {
-                sql = "eliminarLineaComida";
+                sql = "eliminarProcesador";
                 ParametrosStructures[] parametros = new ParametrosStructures[1];
-                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoProcesador", SqlDbType.Int, codigoProcesadorPago);
+                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoProcesador", SqlDbType.Int, id);
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
                 if (numError != 0)

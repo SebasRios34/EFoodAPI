@@ -103,7 +103,7 @@ namespace BLLProyecto
             }
         }
 
-        public bool eliminarTarjetas(int codigoTarjetas)
+        public bool eliminarTarjetas(int id)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -116,7 +116,7 @@ namespace BLLProyecto
             {
                 sql = "eliminarTarjetas";
                 ParametrosStructures[] parametros = new ParametrosStructures[1];
-                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoTarjeta", SqlDbType.Int, codigoTarjeta);
+                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoTarjeta", SqlDbType.Int, id);
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
                 if (numError != 0)

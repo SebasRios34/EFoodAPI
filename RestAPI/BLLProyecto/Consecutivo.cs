@@ -92,8 +92,8 @@ namespace BLLProyecto
                 ParametrosStructures[] parametros = new ParametrosStructures[4];
                 DAL.agregarEstructuraParametros(ref parametros, 0, "@consecutivoId", SqlDbType.Int, consecutivoId);
                 DAL.agregarEstructuraParametros(ref parametros, 1, "@tipoConsecutivo", SqlDbType.Int, tipoConsecutivo);
-                DAL.agregarEstructuraParametros(ref parametros, 2, "@prefijo", SqlDbType.VarChar, prefijo);
-                DAL.agregarEstructuraParametros(ref parametros, 3, "@rolId", SqlDbType.Int, rolId);
+                DAL.agregarEstructuraParametros(ref parametros, 2, "@rolId", SqlDbType.Int, rolId);
+                DAL.agregarEstructuraParametros(ref parametros, 3, "@prefijo", SqlDbType.VarChar, prefijo);
 
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
