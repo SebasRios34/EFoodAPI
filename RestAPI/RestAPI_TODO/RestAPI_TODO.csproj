@@ -177,6 +177,7 @@
     <Compile Include="Controllers\EFoodControllers\RolController.cs" />
     <Compile Include="Controllers\EFoodControllers\TarjetasController.cs" />
     <Compile Include="Controllers\EFoodControllers\TipoPrecioController.cs" />
+    <Compile Include="Controllers\EFoodControllers\TiqueteDescuentoController.cs" />
     <Compile Include="Controllers\EFoodControllers\UsuariosAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

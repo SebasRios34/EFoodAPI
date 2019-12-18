@@ -76,6 +76,7 @@
     <Compile Include="Rol.cs" />
     <Compile Include="Tarjetas.cs" />
     <Compile Include="TiposPrecio.cs" />
+    <Compile Include="TiquetesDescuento.cs" />
     <Compile Include="UsuariosAdmin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

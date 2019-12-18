@@ -11,10 +11,11 @@ using Newtonsoft.Json;
 
 namespace BLLProyecto
 {
-    public class TiposPrecio
+    public class TiquetesDescuento
     {
-        private int tipoConsecutivo, codigoTipoPrecio, precioMonto;
-        private string nombrePrecio;
+        #region Propiedadas
+        private int tipoConsecutivo, codigoTiqueteDescuento, disponibles, descuentoPorcentaje, descuentoCantidad;
+        private string nombreTiquete;
 
         public int TipoConsecutivo
         {
@@ -22,23 +23,36 @@ namespace BLLProyecto
             set { tipoConsecutivo = value; }
         }
 
-        public int CodigoTipoPrecio
+        public int CodigoTiqueteDescuento
         {
-            get { return codigoTipoPrecio; }
-            set { codigoTipoPrecio = value; }
+            get { return codigoTiqueteDescuento; }
+            set { codigoTiqueteDescuento = value; }
         }
 
-        public int PrecioMonto
+        public int Disponibles
         {
-            get { return precioMonto; }
-            set { precioMonto = value; }
+            get { return disponibles; }
+            set { disponibles = value; }
         }
 
-        public string NombrePrecio
-        {   
-            get { return nombrePrecio; }
-            set { nombrePrecio = value; }
+        public int DescuentoPorcentaje { 
+        
+            get { return descuentoPorcentaje; }
+            set { descuentoPorcentaje = value; }
         }
+
+        public int DescuentoCantidad
+        {
+            get { return descuentoCantidad; }
+            set { descuentoCantidad = value; }
+        }
+
+        public string NombreTiquete
+        {
+            get { return nombreTiquete; }
+            set { nombreTiquete = value; }
+        }
+        #endregion
 
         #region Variables para Conexion
         SqlConnection conn;
@@ -48,7 +62,7 @@ namespace BLLProyecto
         DataSet ds;
         #endregion
 
-        public string cargarTiposPrecio()
+        public string cargarTiquetesDescuento()
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -57,7 +71,7 @@ namespace BLLProyecto
             }
             else
             {
-                sql = "cargarTipoPrecio";
+                sql = "cargarTiquetesDescuento";
                 ds = DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
                 if (numError != 0)
                 {
@@ -70,7 +84,7 @@ namespace BLLProyecto
             }
         }
 
-        public bool insertarTiposPrecio(string accion)
+        public bool insertarTiquetesDescuento(string accion)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -81,17 +95,19 @@ namespace BLLProyecto
             {
                 if (accion.Equals("Insertar"))
                 {
-                    sql = "insertarTipoPrecio";
+                    sql = "insertarTiqueteDescuento";
                 }
                 else
                 {
-                    sql = "modificarTipoPrecio";
+                    sql = "modificarTiquetesDescuento";
                 }
-                ParametrosStructures[] parametros = new ParametrosStructures[4];
+                ParametrosStructures[] parametros = new ParametrosStructures[6];
                 DAL.agregarEstructuraParametros(ref parametros, 0, "@tipoConsecutivo", SqlDbType.Int, tipoConsecutivo);
-                DAL.agregarEstructuraParametros(ref parametros, 1, "@codigoTipoPrecio", SqlDbType.Int, codigoTipoPrecio);
-                DAL.agregarEstructuraParametros(ref parametros, 2, "@nombrePrecio", SqlDbType.VarChar, nombrePrecio);
-                DAL.agregarEstructuraParametros(ref parametros, 3, "@precioMonto", SqlDbType.VarChar, precioMonto);
+                DAL.agregarEstructuraParametros(ref parametros, 1, "@codigoTiqueteDescuento", SqlDbType.Int, codigoTiqueteDescuento);
+                DAL.agregarEstructuraParametros(ref parametros, 2, "@nombreTiqueteDescuento", SqlDbType.VarChar, nombreTiquete);
+                DAL.agregarEstructuraParametros(ref parametros, 3, "@disponible", SqlDbType.Int, disponibles);
+                DAL.agregarEstructuraParametros(ref parametros, 4, "@descuentoPorcentaje", SqlDbType.Int, descuentoPorcentaje);
+                DAL.agregarEstructuraParametros(ref parametros, 5, "@descuentoCantidad", SqlDbType.Int, descuentoCantidad);
 
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
@@ -121,9 +137,9 @@ namespace BLLProyecto
             }
             else
             {
-                sql = "eliminarTipoPrecio";
+                sql = "eliminarTiqueteDescuento";
                 ParametrosStructures[] parametros = new ParametrosStructures[1];
-                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoTipoPrecio", SqlDbType.Int, id);
+                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoTiqueteDescuento", SqlDbType.Int, id);
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
                 if (numError != 0)
