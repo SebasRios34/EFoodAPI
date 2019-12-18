@@ -105,7 +105,7 @@ namespace BLLProyecto
                 DAL.agregarEstructuraParametros(ref parametros, 0, "@tipoConsecutivo", SqlDbType.Int, tipoConsecutivo);
                 DAL.agregarEstructuraParametros(ref parametros, 1, "@codigoTiqueteDescuento", SqlDbType.Int, codigoTiqueteDescuento);
                 DAL.agregarEstructuraParametros(ref parametros, 2, "@nombreTiqueteDescuento", SqlDbType.VarChar, nombreTiquete);
-                DAL.agregarEstructuraParametros(ref parametros, 3, "@disponible", SqlDbType.Int, disponibles);
+                DAL.agregarEstructuraParametros(ref parametros, 3, "@disponibles", SqlDbType.Int, disponibles);
                 DAL.agregarEstructuraParametros(ref parametros, 4, "@descuentoPorcentaje", SqlDbType.Int, descuentoPorcentaje);
                 DAL.agregarEstructuraParametros(ref parametros, 5, "@descuentoCantidad", SqlDbType.Int, descuentoCantidad);
 

@@ -107,7 +107,7 @@ namespace BLLProyecto
                 DAL.agregarEstructuraParametros(ref parametros, 2, "@nombreProducto", SqlDbType.VarChar, nombreProducto);
                 DAL.agregarEstructuraParametros(ref parametros, 3, "@codigoLineaComida", SqlDbType.Int, codigoLineaComida);
                 DAL.agregarEstructuraParametros(ref parametros, 4, "@contenido", SqlDbType.VarChar, contenido);
-                DAL.agregarEstructuraParametros(ref parametros, 5, "@codigoTipoPrecio", SqlDbType.VarChar, codigoTipoPrecio);
+                DAL.agregarEstructuraParametros(ref parametros, 5, "@codigoTipoPrecio", SqlDbType.Int, codigoTipoPrecio);
 
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
@@ -126,7 +126,7 @@ namespace BLLProyecto
             }
         }
 
-        public bool eliminarProducto(int codigoProcesadorPago)
+        public bool eliminarProducto(int id)
         {
             conn = DAL.traerConexion("public", ref mensajeError, ref numError);
             if (conn == null)
@@ -139,7 +139,7 @@ namespace BLLProyecto
             {
                 sql = "eliminarProducto";
                 ParametrosStructures[] parametros = new ParametrosStructures[1];
-                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoProducto", SqlDbType.Int, codigoProducto);
+                DAL.agregarEstructuraParametros(ref parametros, 0, "@codigoProducto", SqlDbType.Int, id);
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
                 if (numError != 0)

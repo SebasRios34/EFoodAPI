@@ -53,7 +53,7 @@ namespace BLLProyecto
             }
             else
             {
-                sql = "cargarLineaComida";
+                sql = "cargarLineasComida";
                 ds = DAL.ejecutarDataSet(conn, sql, true, ref mensajeError, ref numError);
                 if (numError != 0)
                 {
@@ -86,7 +86,7 @@ namespace BLLProyecto
                 ParametrosStructures[] parametros = new ParametrosStructures[3];
                 DAL.agregarEstructuraParametros(ref parametros, 0, "@tipoConsecutivo", SqlDbType.Int, tipoConsecutivo);
                 DAL.agregarEstructuraParametros(ref parametros, 1, "@codigoLineaComida", SqlDbType.Int, codigoLineaComida);
-                DAL.agregarEstructuraParametros(ref parametros, 2, "@nombreLineaComida", SqlDbType.DateTime, nombreLineaComida);
+                DAL.agregarEstructuraParametros(ref parametros, 2, "@nombreLineaComida", SqlDbType.VarChar, nombreLineaComida);
 
                 DAL.conectar(conn, ref mensajeError, ref numError);
                 DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
