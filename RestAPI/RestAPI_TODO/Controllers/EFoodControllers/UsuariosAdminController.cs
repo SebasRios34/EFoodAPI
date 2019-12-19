@@ -26,6 +26,12 @@ namespace RestAPI_TODO.Controllers.EFoodControllers
             return usuariosAdmin.agregarUsuariosAdmin("Insertar") ? "Se añadieron con exito" : "No se logro guardar un nuevo usuario";
         }
 
+
+        public string Patch(int id, [FromBody]UsuariosAdmin usuariosAdmin)
+        {
+            return usuariosAdmin.agregarUsuariosAdmin("Modificar") ? "Se cambio la contraseña con exito" : "No se logro cambiar la contraseña";
+        }
+
         public string Put(int id, [FromBody]UsuariosAdmin usuariosAdmin) 
         {
             return usuariosAdmin.modificarContrasena("Modificar") ? "Se cambio la contraseña con exito" : "No se logro cambiar la contraseña";

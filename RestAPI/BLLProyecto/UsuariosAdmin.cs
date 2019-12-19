@@ -169,22 +169,33 @@ namespace BLLProyecto
                 if (accion.Equals("Insertar"))
                 {
                     sql = "insertarUsuariosAdmin";
+                    ParametrosStructures[] parametros = new ParametrosStructures[8];
+                    DAL.agregarEstructuraParametros(ref parametros, 0, "@usuariosAdminId", SqlDbType.Int, usuariosAdminId);
+                    DAL.agregarEstructuraParametros(ref parametros, 1, "@usuariosNombre", SqlDbType.VarChar, usuariosNombre);
+                    DAL.agregarEstructuraParametros(ref parametros, 2, "@contrasena", SqlDbType.VarChar, contrasena);
+                    DAL.agregarEstructuraParametros(ref parametros, 3, "@email", SqlDbType.VarChar, email);
+                    DAL.agregarEstructuraParametros(ref parametros, 4, "@rolId", SqlDbType.Int, rolId);
+                    DAL.agregarEstructuraParametros(ref parametros, 5, "@preguntaSeguridadId", SqlDbType.Int, preguntaSeguridadId);
+                    DAL.agregarEstructuraParametros(ref parametros, 6, "@respuestaSeguridad", SqlDbType.VarChar, respuestaSeguridad);
+                    DAL.agregarEstructuraParametros(ref parametros, 7, "@estado", SqlDbType.VarChar, estado);
+                    DAL.conectar(conn, ref mensajeError, ref numError);
+                    DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
                 }
                 else
                 {
                     sql = "modificarUsuariosAdmin";
+                    ParametrosStructures[] parametros = new ParametrosStructures[7];
+                    DAL.agregarEstructuraParametros(ref parametros, 0, "@usuariosAdminId", SqlDbType.Int, usuariosAdminId);
+                    DAL.agregarEstructuraParametros(ref parametros, 1, "@usuarioNombre", SqlDbType.VarChar, usuariosNombre);
+                    DAL.agregarEstructuraParametros(ref parametros, 2, "@email", SqlDbType.VarChar, email);
+                    DAL.agregarEstructuraParametros(ref parametros, 3, "@rolId", SqlDbType.Int, rolId);
+                    DAL.agregarEstructuraParametros(ref parametros, 4, "@preguntaSeguridadId", SqlDbType.Int, preguntaSeguridadId);
+                    DAL.agregarEstructuraParametros(ref parametros, 5, "@respuestaSeguridad", SqlDbType.VarChar, respuestaSeguridad);
+                    DAL.agregarEstructuraParametros(ref parametros, 6, "@estado", SqlDbType.VarChar, estado);
+                    DAL.conectar(conn, ref mensajeError, ref numError);
+                    DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
                 }
-                ParametrosStructures[] parametros = new ParametrosStructures[8];
-                DAL.agregarEstructuraParametros(ref parametros, 0, "@usuariosAdminId", SqlDbType.Int, usuariosAdminId);
-                DAL.agregarEstructuraParametros(ref parametros, 1, "@usuariosNombre", SqlDbType.VarChar, usuariosNombre);
-                DAL.agregarEstructuraParametros(ref parametros, 2, "@contrasena", SqlDbType.VarChar, contrasena);
-                DAL.agregarEstructuraParametros(ref parametros, 3, "@email", SqlDbType.VarChar, email);
-                DAL.agregarEstructuraParametros(ref parametros, 4, "@rolId", SqlDbType.Int, rolId);
-                DAL.agregarEstructuraParametros(ref parametros, 5, "@preguntaSeguridadId", SqlDbType.Int, preguntaSeguridadId);
-                DAL.agregarEstructuraParametros(ref parametros, 6, "@respuestaSeguridad", SqlDbType.VarChar, respuestaSeguridad);
-                DAL.agregarEstructuraParametros(ref parametros, 7, "@estado", SqlDbType.VarChar, estado);
-                DAL.conectar(conn, ref mensajeError, ref numError);
-                DAL.ejecutarSqlCommandParametros(conn, sql, true, parametros, ref mensajeError, ref numError);
+
 
                 if (numError != 0)
                 {
